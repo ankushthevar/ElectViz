@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🇮🇳 ElectViz: Parliament of India Dashboard
 
-## Getting Started
+ElectViz is a professional, high-performance web application designed to provide a comprehensive and interactive visualization of the Indian Parliamentary results. It offers a unified "at-a-glance" view of the political landscape, covering both the **Lok Sabha** (Lower House) and **Rajya Sabha** (Upper House).
 
-First, run the development server:
+## 🚀 Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 📍 Interactive National Map
+- **Political Dominance View:** States are color-coded based on the ruling or leading political party (e.g., NDA Orange, INDIA Blue).
+- **Hover Summaries:** Instant tooltips showing total seats and the leading party for every state and union territory.
+- **Drill-Down Capability:** Click on any state to "zoom in" and explore granular, constituency-level details.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🏛️ Parliament Seat Map (Constituency Grid)
+- **Visual Grid:** A professional grid representation of every seat in a selected state.
+- **Winner Details:** Hover over individual seats to see the constituency name, winning candidate, and victory margin.
+- **Party Breakdown:** Sidebar summary of seat distribution within the state with visual progress bars.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🌓 Dual-House Experience
+- **One-Page Dashboard:** Seamlessly toggle between Lok Sabha and Rajya Sabha views without page reloads.
+- **House Composition:** Specialized pie and bar charts showing the unique structure and party distribution of each house.
+- **Historical Trends:** Comparison of party performance across the last three general elections (2014, 2019, 2024).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 👤 National & State Governance
+- **National Leadership:** Dedicated panel showcasing the President of India, Prime Minister, and key Union Cabinet Ministers with HD portraits.
+- **State Leadership:** State-specific governance cards showing the Chief Minister, Deputy CMs, and Cabinet portfolios.
+- **Robust Avatars:** Custom `LeaderAvatar` system with 100% reliable SVG fallbacks to ensure a professional look even if images are blocked.
 
-## Learn More
+## 🛠️ Technology Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework:** [Next.js 15+](https://nextjs.org/) (App Router, Turbopack)
+- **Language:** [TypeScript](https://www.typescriptlang.org/) for type-safe data handling.
+- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/) for modern, responsive UI.
+- **Maps:** [React Simple Maps](https://www.react-simple-maps.io/) with TopoJSON.
+- **Charts:** [Recharts](https://recharts.org/) for interactive data visualizations.
+- **Icons:** [Lucide React](https://lucide.dev/).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚦 Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Prerequisites
+- Node.js 18.x or higher
+- npm or yarn
 
-## Deploy on Vercel
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ankushthevar/ElectViz.git
+   cd ElectViz
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the dashboard.
+
+## 📁 Project Structure
+
+- `src/app`: Next.js pages and API routes.
+- `src/components/charts`: Interactive map and data visualization components.
+- `src/components/ui`: Reusable UI elements like Cards and Avatars.
+- `src/lib/mockData.ts`: Centralized, expert-verified election and governance data.
+
+## 📝 License
+
+This project is open-source and available under the MIT License.
