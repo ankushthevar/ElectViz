@@ -7,7 +7,7 @@ import { VoteShareChart } from '@/components/charts/VoteShareChart';
 import { HistoricalTrendChart } from '@/components/charts/HistoricalTrendChart';
 import { IndiaMap } from '@/components/charts/IndiaMap';
 import { LeaderAvatar } from '@/components/ui/LeaderAvatar';
-import { ElectionData, PartyResult, LeaderInfo } from '@/lib/mockData';
+import { ElectionData, LeaderInfo } from '@/lib/mockData';
 import { Users, Vote, CheckCircle2, Clock, ShieldCheck, Landmark } from 'lucide-react';
 
 const LeaderCard = ({ leader }: { leader: LeaderInfo }) => {
@@ -27,7 +27,7 @@ const LeaderCard = ({ leader }: { leader: LeaderInfo }) => {
 export default function Home() {
   const [activeHouse, setActiveHouse] = useState<'LS' | 'RS'>('LS');
   const [data, setData] = useState<ElectionData | null>(null);
-  const [historical, setHistorical] = useState<any[]>([]);
+  const [historical, setHistorical] = useState<HistoricalData[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

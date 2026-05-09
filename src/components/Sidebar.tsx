@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { LayoutDashboard, History, Map as MapIcon, Settings, BarChart3 } from 'lucide-react';
+import { LayoutDashboard, Map as MapIcon, Settings, BarChart3 } from 'lucide-react';
 
 const navItems = [
   { name: 'Parliament Overview', icon: LayoutDashboard, href: '/' },

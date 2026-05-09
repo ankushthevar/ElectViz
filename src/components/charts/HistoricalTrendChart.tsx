@@ -3,8 +3,15 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+interface HistoricalData {
+  year: number;
+  BJP: number;
+  INC: number;
+  OTH: number;
+}
+
 interface Props {
-  data: any[];
+  data: HistoricalData[];
 }
 
 export const HistoricalTrendChart: React.FC<Props> = ({ data }) => {

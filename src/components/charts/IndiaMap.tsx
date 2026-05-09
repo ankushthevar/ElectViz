@@ -2,9 +2,9 @@
 
 import React, { useState, useMemo } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import { scaleQuantile } from 'd3-scale';
-import { stateWiseResults, mockStateDetails, StateDetail } from '@/lib/mockData';
-import { ArrowLeft, MapPin, Users, Trophy, Scale, Briefcase } from 'lucide-react';
+import { stateWiseResults, mockStateDetails } from '@/lib/mockData';
+import { LeaderAvatar } from '@/components/ui/LeaderAvatar';
+import { ArrowLeft, MapPin, Trophy, Scale, Briefcase } from 'lucide-react';
 
 const INDIA_TOPO_JSON = 'https://raw.githubusercontent.com/Anujarya300/bubble_maps/master/data/geography-data/india.topo.json';
 
@@ -33,29 +33,27 @@ const partyColors: Record<string, string> = {
   'OTH': '#A9A9A9',
 };
 
-const colorScale = scaleQuantile<string>()
-  .domain(stateWiseResults.map(d => d.totalSeats))
-  .range([
-    "#eff6ff",
-    "#dbeafe",
-    "#bfdbfe",
-    "#93c5fd",
-    "#60a5fa",
-    "#3b82f6",
-    "#2563eb",
-    "#1d4ed8",
-    "#1e40af",
-  ]);
+interface GeoProperties {
+  name?: string;
+  ST_NM?: string;
+  [key: string]: string | number | boolean | undefined;
+}
+
+interface GeographyData {
+  id: string;
+  properties: GeoProperties;
+  rsmKey: string;
+}
 
 export const IndiaMap: React.FC = () => {
   const [selectedState, setSelectedState] = useState<string | null>(null);
-  const [hoveredState, setHoveredState] = useState<any | null>(null);
+  const [hoveredState, setHoveredState] = useState<{ id: string; properties: GeoProperties; data: { totalSeats: number; leading?: string } | undefined } | null>(null);
 
   const stateDetail = useMemo(() => 
     selectedState ? mockStateDetails[selectedState] || null : null
   , [selectedState]);
 
-  const handleStateClick = (geo: any) => {
+  const handleStateClick = (geo: GeographyData) => {
     const stateId = geo.id || geo.properties.name || geo.properties.ST_NM;
     setSelectedState(stateId);
   };
@@ -85,8 +83,6 @@ export const IndiaMap: React.FC = () => {
                   <Scale size={14} className="text-indigo-500" />
                   State Governance
                 </h4>
-import { LeaderAvatar } from '@/components/ui/LeaderAvatar';
-...
                 <div className="space-y-4">
                   <div className="p-3 bg-zinc-50 dark:bg-zinc-800/50 rounded-lg border border-zinc-100 dark:border-zinc-700 flex items-center gap-3">
                     <LeaderAvatar 
@@ -269,14 +265,13 @@ import { LeaderAvatar } from '@/components/ui/LeaderAvatar';
         >
           <Geographies geography={INDIA_TOPO_JSON}>
             {({ geographies }) =>
-              geographies.map((geo) => {
+              geographies.map((geo: GeographyData) => {
                 const stateId = geo.id || geo.properties.name || geo.properties.ST_NM;
                 const stateData = stateWiseResults.find(s => 
                   s.id === stateId || 
                   s.name === geo.properties.name || 
                   s.name === geo.properties.ST_NM
                 );
-                const isHovered = hoveredState?.id === stateId;
                 
                 return (
                   <Geography
