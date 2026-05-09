@@ -30,6 +30,7 @@ jobs:
  --legacy-peer-deps
  --legacy-peer-deps
  --legacy-peer-deps
+ --legacy-peer-deps
 
       - name: Lint Code
         run: npm run lint
